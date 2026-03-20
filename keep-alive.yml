@@ -1,0 +1,79 @@
+# ============================================================
+# SNOW Instance Keeper - Daily GitHub Actions Workflow
+# ============================================================
+# This runs every day at 7:00 AM UTC (adjust to your timezone)
+# and keeps your ServiceNow developer instance alive.
+# ============================================================
+
+name: Keep SNOW Instance Alive
+
+on:
+  # ── Runs daily on a schedule ──────────────────────────────
+  schedule:
+    - cron: "0 7 * * *" # Every day at 7:00 AM UTC
+    # Change the time by editing the cron:
+    #   "0 7 * * *"  = 7:00 AM UTC = 8:00 AM Berlin (CET) / 12:30 PM IST
+    #   "0 3 * * *"  = 3:00 AM UTC = 8:30 AM IST
+    #   "0 14 * * *" = 2:00 PM UTC = 7:30 PM IST
+    #   Tip: Google "crontab guru" to build your own schedule
+
+  # ── Also allows you to run it manually anytime ────────────
+  workflow_dispatch:
+    # This adds a "Run workflow" button in the GitHub Actions tab
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20 # Safety: kill if stuck for 20 mins
+
+    steps:
+      # ── Step 1: Get the code ──────────────────────────────
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      # ── Step 2: Set up Node.js ────────────────────────────
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # ── Step 3: Install dependencies ──────────────────────
+      - name: 📚 Install npm packages
+        run: npm install
+
+      # ── Step 4: Install Playwright browser ────────────────
+      - name: 🌐 Install Playwright Chromium
+        run: npx playwright install chromium --with-deps
+
+      # ── Step 5: Run the keep-alive script ─────────────────
+      - name: 🚀 Run Instance Keeper
+        id: keeper
+        env:
+          SNOW_INSTANCE_URL: ${{ secrets.SNOW_INSTANCE_URL }}
+          SNOW_USERNAME: ${{ secrets.SNOW_USERNAME }}
+          SNOW_PASSWORD: ${{ secrets.SNOW_PASSWORD }}
+        run: npm run keep-alive
+
+      # ── Step 6: Send email notification ───────────────────
+      # Runs ALWAYS — whether the script succeeded or failed
+      - name: 📧 Send Email Notification
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_APP_PASSWORD }}
+          subject: "SNOW Keeper: ${{ steps.keeper.outcome == 'success' && '✅ Instance is alive!' || '❌ Something went wrong' }}"
+          to: ${{ secrets.EMAIL_TO }}
+          from: SNOW Instance Keeper
+          body: |
+            Hi! Here's your daily SNOW Instance Keeper report.
+
+            Status: ${{ steps.keeper.outcome == 'success' && '✅ SUCCESS' || '❌ FAILED' }}
+            Instance: ${{ secrets.SNOW_INSTANCE_URL }}
+            Time: ${{ github.event.repository.updated_at }}
+            
+            ${{ steps.keeper.outcome == 'success' && 'Your instance has been accessed and is safe from reclaim.' || 'Something went wrong. Please check the logs at:' }}
+            
+            Logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
