@@ -1,6 +1,6 @@
-# 🪟 SNOW Instance Keeper — Windows Setup Guide
+# 🪟 ServiceNow Instance Keeper — Windows Setup Guide
 
-This guide will walk you through setting up the SNOW Instance Keeper on your Windows PC. Every step is explained in detail — no prior experience needed.
+This guide will walk you through setting up the ServiceNow Instance Keeper on your Windows PC. Every step is explained in detail — no prior experience needed.
 
 ---
 
@@ -19,7 +19,7 @@ This guide will walk you through setting up the SNOW Instance Keeper on your Win
 
 1. Go to [github.com/new](https://github.com/new)
 2. Fill in:
-   - **Repository name**: `snow-instance-keeper`
+   - **Repository name**: `servicenow-instance-keeper`
    - **Description**: `Keeps my ServiceNow dev instance alive`
    - **Visibility**: Select **Private** 🔒
 3. **Do NOT** check "Add a README file" (we already have one)
@@ -30,12 +30,12 @@ This guide will walk you through setting up the SNOW Instance Keeper on your Win
 
 ## Step 2: Download This Project
 
-Download all the project files and save them in a folder called `snow-instance-keeper` on your PC.
+Download all the project files and save them in a folder called `servicenow-instance-keeper` on your PC.
 
 Make sure the folder structure looks exactly like this:
 
 ```
-snow-instance-keeper/
+servicenow-instance-keeper/
 ├── .github/
 │   └── workflows/
 │       └── keep-alive.yml
@@ -103,13 +103,13 @@ It will open your browser — click Authorize, and you're logged in.
 ### 3d. Navigate to your project folder
 
 The easiest way:
-1. Open **File Explorer** and navigate to the `snow-instance-keeper` folder
+1. Open **File Explorer** and navigate to the `servicenow-instance-keeper` folder
 2. Click in the **address bar** at the top of File Explorer (where it shows the folder path)
 3. The path will get highlighted and become selectable — **copy it** (Ctrl+C)
 4. In PowerShell, type `cd` followed by the path in quotes:
 
 ```powershell
-cd "C:\Users\YourName\Documents\snow-instance-keeper"
+cd "C:\Users\YourName\Documents\servicenow-instance-keeper"
 ```
 
 > 💡 **Tip**: If the path has spaces in it (like `My Documents`), make sure to wrap the whole path in double quotes.
@@ -129,11 +129,11 @@ git add .
 ```
 
 ```powershell
-git commit -m "Initial setup: SNOW Instance Keeper"
+git commit -m "Initial setup: ServiceNow Instance Keeper"
 ```
 
 ```powershell
-git remote add origin https://github.com/YOUR_USERNAME/snow-instance-keeper.git
+git remote add origin https://github.com/YOUR_USERNAME/servicenow-instance-keeper.git
 ```
 
 > ⚠️ Replace `YOUR_USERNAME` with your actual GitHub username.
@@ -163,7 +163,7 @@ After this, refresh your GitHub repo page — you should see all the files and f
 1. Go to [myaccount.google.com/security](https://myaccount.google.com/security)
 2. Make sure **2-Step Verification** is turned **ON** (you can't create app passwords without it)
 3. Go to [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
-4. Type a name like `snow-keeper` and click **Create**
+4. Type a name like `servicenow-keeper` and click **Create**
 5. Google will show you a **16-character password** — **copy it immediately** (you won't see it again)
 
 ---
@@ -172,7 +172,7 @@ After this, refresh your GitHub repo page — you should see all the files and f
 
 This is where you securely store your login info and email settings. GitHub encrypts these — **nobody can see them**, not even you after saving.
 
-1. Go to your repo on GitHub: `https://github.com/YOUR_USERNAME/snow-instance-keeper`
+1. Go to your repo on GitHub: `https://github.com/YOUR_USERNAME/servicenow-instance-keeper`
 2. Click **Settings** (tab at the top of the repo)
 3. In the left sidebar, click **Secrets and variables** → **Actions**
 4. Click **New repository secret** and add these **one at a time**:
@@ -181,9 +181,9 @@ This is where you securely store your login info and email settings. GitHub encr
 
 | Name | Value | Example |
 |------|-------|---------|
-| `SNOW_INSTANCE_URL` | Your full instance URL | `https://dev12345.service-now.com` |
-| `SNOW_USERNAME` | Your instance username | `admin` |
-| `SNOW_PASSWORD` | Your instance password | `your-password-here` |
+| `SERVICENOW_INSTANCE_URL` | Your full instance URL | `https://dev12345.service-now.com` |
+| `SERVICENOW_USERNAME` | Your instance username | `admin` |
+| `SERVICENOW_PASSWORD` | Your instance password | `your-password-here` |
 
 **Email notification settings (3 secrets):**
 
@@ -211,14 +211,14 @@ Let's make sure everything works before relying on the daily schedule:
 
 1. Go to your repo on GitHub
 2. Click the **Actions** tab (at the top)
-3. You'll see **"Keep SNOW Instance Alive"** in the left sidebar — click it
+3. You'll see **"Keep ServiceNow Instance Alive"** in the left sidebar — click it
 4. Click the **"Run workflow"** button (dropdown on the right)
 5. Click the green **"Run workflow"** button
 
 Now watch it run! Click on the running workflow to see live logs. You should see messages like:
 
 ```
-🚀 Starting SNOW Instance Keeper...
+🚀 Starting ServiceNow Instance Keeper...
 📍 Target instance: https://dev12345.service-now.com
 ✅ Instance appears to be running!
 ✅ Login successful!
@@ -264,9 +264,9 @@ npx playwright install chromium
 ```
 
 ```powershell
-$env:SNOW_INSTANCE_URL="https://dev12345.service-now.com"
-$env:SNOW_USERNAME="admin"
-$env:SNOW_PASSWORD="your-password"
+$env:SERVICENOW_INSTANCE_URL="https://dev12345.service-now.com"
+$env:SERVICENOW_USERNAME="admin"
+$env:SERVICENOW_PASSWORD="your-password"
 ```
 
 ```powershell

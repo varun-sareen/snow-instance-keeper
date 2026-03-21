@@ -1,6 +1,6 @@
-# 🍎 SNOW Instance Keeper — Mac Setup Guide
+# 🍎 ServiceNow Instance Keeper — Mac Setup Guide
 
-This guide will walk you through setting up the SNOW Instance Keeper on your Mac. Every step is explained in detail — no prior experience needed.
+This guide will walk you through setting up the ServiceNow Instance Keeper on your Mac. Every step is explained in detail — no prior experience needed.
 
 ---
 
@@ -19,7 +19,7 @@ This guide will walk you through setting up the SNOW Instance Keeper on your Mac
 
 1. Go to [github.com/new](https://github.com/new)
 2. Fill in:
-   - **Repository name**: `snow-instance-keeper`
+   - **Repository name**: `servicenow-instance-keeper`
    - **Description**: `Keeps my ServiceNow dev instance alive`
    - **Visibility**: Select **Private** 🔒
 3. **Do NOT** check "Add a README file" (we already have one)
@@ -30,12 +30,12 @@ This guide will walk you through setting up the SNOW Instance Keeper on your Mac
 
 ## Step 2: Download This Project
 
-Download all the project files and save them in a folder called `snow-instance-keeper` on your Mac.
+Download all the project files and save them in a folder called `servicenow-instance-keeper` on your Mac.
 
 Make sure the folder structure looks exactly like this:
 
 ```
-snow-instance-keeper/
+servicenow-instance-keeper/
 ├── .github/
 │   └── workflows/
 │       └── keep-alive.yml
@@ -79,7 +79,7 @@ It will open your browser — click Authorize, and you're logged in.
 
 The easiest way:
 1. Type `cd ` in Terminal (with a space after it — don't press Enter yet)
-2. **Drag and drop** the `snow-instance-keeper` folder from Finder into the Terminal window — it will auto-paste the full path
+2. **Drag and drop** the `servicenow-instance-keeper` folder from Finder into the Terminal window — it will auto-paste the full path
 3. Press Enter
 
 ### 3d. Push the code to GitHub
@@ -95,11 +95,11 @@ git add .
 ```
 
 ```bash
-git commit -m "Initial setup: SNOW Instance Keeper"
+git commit -m "Initial setup: ServiceNow Instance Keeper"
 ```
 
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/snow-instance-keeper.git
+git remote add origin https://github.com/YOUR_USERNAME/servicenow-instance-keeper.git
 ```
 
 > ⚠️ Replace `YOUR_USERNAME` with your actual GitHub username.
@@ -123,7 +123,7 @@ After this, refresh your GitHub repo page — you should see all the files and f
 1. Go to [myaccount.google.com/security](https://myaccount.google.com/security)
 2. Make sure **2-Step Verification** is turned **ON** (you can't create app passwords without it)
 3. Go to [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
-4. Type a name like `snow-keeper` and click **Create**
+4. Type a name like `servicenow-keeper` and click **Create**
 5. Google will show you a **16-character password** — **copy it immediately** (you won't see it again)
 
 ---
@@ -132,7 +132,7 @@ After this, refresh your GitHub repo page — you should see all the files and f
 
 This is where you securely store your login info and email settings. GitHub encrypts these — **nobody can see them**, not even you after saving.
 
-1. Go to your repo on GitHub: `https://github.com/YOUR_USERNAME/snow-instance-keeper`
+1. Go to your repo on GitHub: `https://github.com/YOUR_USERNAME/servicenow-instance-keeper`
 2. Click **Settings** (tab at the top of the repo)
 3. In the left sidebar, click **Secrets and variables** → **Actions**
 4. Click **New repository secret** and add these **one at a time**:
@@ -141,9 +141,9 @@ This is where you securely store your login info and email settings. GitHub encr
 
 | Name | Value | Example |
 |------|-------|---------|
-| `SNOW_INSTANCE_URL` | Your full instance URL | `https://dev12345.service-now.com` |
-| `SNOW_USERNAME` | Your instance username | `admin` |
-| `SNOW_PASSWORD` | Your instance password | `your-password-here` |
+| `SERVICENOW_INSTANCE_URL` | Your full instance URL | `https://dev12345.service-now.com` |
+| `SERVICENOW_USERNAME` | Your instance username | `admin` |
+| `SERVICENOW_PASSWORD` | Your instance password | `your-password-here` |
 
 **Email notification settings (3 secrets):**
 
@@ -171,14 +171,14 @@ Let's make sure everything works before relying on the daily schedule:
 
 1. Go to your repo on GitHub
 2. Click the **Actions** tab (at the top)
-3. You'll see **"Keep SNOW Instance Alive"** in the left sidebar — click it
+3. You'll see **"Keep ServiceNow Instance Alive"** in the left sidebar — click it
 4. Click the **"Run workflow"** button (dropdown on the right)
 5. Click the green **"Run workflow"** button
 
 Now watch it run! Click on the running workflow to see live logs. You should see messages like:
 
 ```
-🚀 Starting SNOW Instance Keeper...
+🚀 Starting ServiceNow Instance Keeper...
 📍 Target instance: https://dev12345.service-now.com
 ✅ Instance appears to be running!
 ✅ Login successful!
@@ -220,9 +220,9 @@ npx playwright install chromium
 ```
 
 ```bash
-export SNOW_INSTANCE_URL="https://dev12345.service-now.com"
-export SNOW_USERNAME="admin"
-export SNOW_PASSWORD="your-password"
+export SERVICENOW_INSTANCE_URL="https://dev12345.service-now.com"
+export SERVICENOW_USERNAME="admin"
+export SERVICENOW_PASSWORD="your-password"
 ```
 
 ```bash

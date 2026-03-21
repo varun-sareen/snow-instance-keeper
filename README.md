@@ -1,8 +1,8 @@
-# ❄️ SNOW Instance Keeper
+# ❄️ ServiceNow Instance Keeper
 
-![GitHub stars](https://img.shields.io/github/stars/varun-sareen/snow-instance-keeper?style=flat-square&color=38bdf8)
-![GitHub forks](https://img.shields.io/github/forks/varun-sareen/snow-instance-keeper?style=flat-square&color=2dd4bf)
-![GitHub license](https://img.shields.io/github/license/varun-sareen/snow-instance-keeper?style=flat-square)
+![GitHub stars](https://img.shields.io/github/stars/varun-sareen/servicenow-instance-keeper?style=flat-square&color=38bdf8)
+![GitHub forks](https://img.shields.io/github/forks/varun-sareen/servicenow-instance-keeper?style=flat-square&color=2dd4bf)
+![GitHub license](https://img.shields.io/github/license/varun-sareen/servicenow-instance-keeper?style=flat-square)
 
 **Automatically keeps your ServiceNow Developer Instance alive so it never gets reclaimed.**
 
@@ -40,7 +40,7 @@ Pick the guide for your operating system:
 ## 📁 Project Structure
 
 ```
-snow-instance-keeper/
+servicenow-instance-keeper/
 ├── .github/
 │   └── workflows/
 │       └── keep-alive.yml    ← GitHub Actions schedule & workflow + email notification

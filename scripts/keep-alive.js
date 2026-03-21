@@ -1,5 +1,5 @@
 // =============================================================
-// SNOW Instance Keeper - Keep your ServiceNow dev instance alive
+// ServiceNow Instance Keeper - Keep your ServiceNow dev instance alive
 // =============================================================
 // This script logs into your ServiceNow developer instance,
 // wakes it up if it's hibernating, and visits key pages
@@ -10,9 +10,9 @@ const { chromium } = require("playwright");
 
 // ── Configuration (pulled from environment variables) ─────────
 const config = {
-  instanceUrl: process.env.SNOW_INSTANCE_URL, // e.g. https://dev12345.service-now.com
-  username: process.env.SNOW_USERNAME, // e.g. admin
-  password: process.env.SNOW_PASSWORD, // your instance password
+  instanceUrl: process.env.SERVICENOW_INSTANCE_URL, // e.g. https://dev12345.service-now.com
+  username: process.env.SERVICENOW_USERNAME, // e.g. admin
+  password: process.env.SERVICENOW_PASSWORD, // your instance password
   headless: process.env.HEADLESS !== "false", // set HEADLESS=false to watch it run locally
 };
 
@@ -29,15 +29,15 @@ function log(message) {
 
 // ── Main automation ──────────────────────────────────────────
 async function keepInstanceAlive() {
-  log("🚀 Starting SNOW Instance Keeper...");
+  log("🚀 Starting ServiceNow Instance Keeper...");
 
   // --- Validate config ---
   if (!config.instanceUrl || !config.username || !config.password) {
     console.error("❌ Missing required environment variables!");
     console.error("   Make sure these are set:");
-    console.error("   - SNOW_INSTANCE_URL  (e.g. https://dev12345.service-now.com)");
-    console.error("   - SNOW_USERNAME       (e.g. admin)");
-    console.error("   - SNOW_PASSWORD       (your instance password)");
+    console.error("   - SERVICENOW_INSTANCE_URL  (e.g. https://dev12345.service-now.com)");
+    console.error("   - SERVICENOW_USERNAME       (e.g. admin)");
+    console.error("   - SERVICENOW_PASSWORD       (your instance password)");
     process.exit(1);
   }
 

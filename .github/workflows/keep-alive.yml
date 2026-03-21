@@ -1,11 +1,11 @@
 # ============================================================
-# SNOW Instance Keeper - Daily GitHub Actions Workflow
+# ServiceNow Instance Keeper - Daily GitHub Actions Workflow
 # ============================================================
 # This runs every day at 13:00 CET (adjust to your timezone)
 # and keeps your ServiceNow developer instance alive.
 # ============================================================
 
-name: Keep SNOW Instance Alive
+name: Keep ServiceNow Instance Alive
 
 on:
   # ── Runs daily on a schedule ──────────────────────────────
@@ -47,9 +47,9 @@ jobs:
       - name: 🚀 Run Instance Keeper
         id: keeper
         env:
-          SNOW_INSTANCE_URL: ${{ secrets.SNOW_INSTANCE_URL }}
-          SNOW_USERNAME: ${{ secrets.SNOW_USERNAME }}
-          SNOW_PASSWORD: ${{ secrets.SNOW_PASSWORD }}
+          SERVICENOW_INSTANCE_URL: ${{ secrets.SERVICENOW_INSTANCE_URL }}
+          SERVICENOW_USERNAME: ${{ secrets.SERVICENOW_USERNAME }}
+          SERVICENOW_PASSWORD: ${{ secrets.SERVICENOW_PASSWORD }}
         run: npm run keep-alive
 
       # ── Step 6: Send email notification ───────────────────
@@ -62,14 +62,14 @@ jobs:
           server_port: 587
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_APP_PASSWORD }}
-          subject: "SNOW Keeper: ${{ steps.keeper.outcome == 'success' && '✅ Instance is alive!' || '❌ Something went wrong' }}"
+          subject: "ServiceNow Keeper: ${{ steps.keeper.outcome == 'success' && '✅ Instance is alive!' || '❌ Something went wrong' }}"
           to: ${{ secrets.EMAIL_TO }}
-          from: SNOW Instance Keeper
+          from: ServiceNow Instance Keeper
           body: |
-            Hi! Here's your daily SNOW Instance Keeper report.
+            Hi! Here's your daily ServiceNow Instance Keeper report.
 
             Status: ${{ steps.keeper.outcome == 'success' && '✅ SUCCESS' || '❌ FAILED' }}
-            Instance: ${{ secrets.SNOW_INSTANCE_URL }}
+            Instance: ${{ secrets.SERVICENOW_INSTANCE_URL }}
             Time: ${{ github.event.repository.updated_at }}
             
             ${{ steps.keeper.outcome == 'success' && 'Your instance has been accessed and is safe from reclaim.' || 'Something went wrong. Please check the logs at:' }}
