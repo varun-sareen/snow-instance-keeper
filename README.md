@@ -8,6 +8,10 @@
 ![Last Commit](https://img.shields.io/github/last-commit/varun-sareen/servicenow-instance-keeper?style=flat-square&color=blue)
 ![Node](https://img.shields.io/badge/node-24-339933?style=flat-square&logo=node.js&logoColor=white)
 ![Platform](https://img.shields.io/badge/platform-GitHub%20Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
+![Views](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvarun-sareen%2Fservicenow-instance-keeper%2Fmain%2Ftraffic-data.json&query=%24.totalViews&label=views&style=flat-square&color=blue)
+![Unique Visitors](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvarun-sareen%2Fservicenow-instance-keeper%2Fmain%2Ftraffic-data.json&query=%24.totalUniqueVisitors&label=unique%20visitors&style=flat-square&color=38bdf8)
+![Clones](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvarun-sareen%2Fservicenow-instance-keeper%2Fmain%2Ftraffic-data.json&query=%24.totalClones&label=clones&style=flat-square&color=2dd4bf)
+![Unique Cloners](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fvarun-sareen%2Fservicenow-instance-keeper%2Fmain%2Ftraffic-data.json&query=%24.totalUniqueCloners&label=unique%20cloners&style=flat-square&color=9f7aea)
 
 **Automatically keeps your ServiceNow Developer Instance alive so it never gets reclaimed.**
 
