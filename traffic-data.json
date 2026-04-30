@@ -259,6 +259,16 @@
       "timestamp": "2026-04-27T00:00:00Z",
       "count": 0,
       "uniques": 0
+    },
+    {
+      "timestamp": "2026-04-28T00:00:00Z",
+      "count": 0,
+      "uniques": 0
+    },
+    {
+      "timestamp": "2026-04-29T00:00:00Z",
+      "count": 0,
+      "uniques": 0
     }
   ],
   "clones": [
@@ -521,11 +531,21 @@
       "timestamp": "2026-04-27T00:00:00Z",
       "count": 20,
       "uniques": 9
+    },
+    {
+      "timestamp": "2026-04-28T00:00:00Z",
+      "count": 12,
+      "uniques": 7
+    },
+    {
+      "timestamp": "2026-04-29T00:00:00Z",
+      "count": 27,
+      "uniques": 10
     }
   ],
-  "lastUpdated": "2026-04-29T23:54:58.623Z",
+  "lastUpdated": "2026-04-30T23:53:27.796Z",
   "totalViews": 277,
   "totalUniqueVisitors": 100,
-  "totalClones": 627,
-  "totalUniqueCloners": 396
+  "totalClones": 666,
+  "totalUniqueCloners": 413
 }
